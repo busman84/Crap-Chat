@@ -1,0 +1,16 @@
+# index.html.erb
+<h1>Listing users</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.title %></td>
+      <td><%= user.text %></td>
+    </tr>
+  <% end %>
+</table>

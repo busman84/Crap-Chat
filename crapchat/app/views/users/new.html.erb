@@ -1,6 +1,11 @@
+<% provide(:title, 'Sign up') %>
+<h1>Account Registration</h1>
 
-<h1>New user</h1>
- 
 <%= render 'form' %>
- 
-<%= link_to 'Signup', signup_path %>
+<%= form_for(@user) do |f| %>
+<%= f.submit "Create my account", class: "btn btn-primary" %>
+<% end %>
+<p>Already a user? <%= link_to 'Login', login_path %></p>
+
+
+<%= @user.username %>

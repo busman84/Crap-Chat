@@ -23,30 +23,6 @@ class CrapsController < ApplicationController
 		end	
 	end
 
-    before_action :set_crap, only: [:show, :edit, :update, :destroy]
-    def create
-        @crap = Crap.new(crap_params)
-        respond_to do |format|
-            if @crap.save
-                format.html {redirect_to @crap, notice: "Solid Crap"}
-            else 
-                format.html {render :new}
-            end    
-        end
-    end
-
-    def edit
-        
-    end
-
-
-    def destroy
-        Crap.find(params[:id]).destroy
-        respond_to do |format|
-            format.html{redirect_to craps_url}
-        end    
-    end
-
 	def show
 		@crap = Crap.find(params[:id])
 	end
@@ -57,15 +33,6 @@ class CrapsController < ApplicationController
 
     def new
      @crap = Crap.new    
-    end
-
-
-    def show
-        @crap = Crap.find(params[:id])
-    end
-
-    def index
-        @craps = Crap.all
     end
 
     

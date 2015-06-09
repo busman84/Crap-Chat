@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
 
   def show
-  
+  @craps = Crap.all
   end
 
   def create

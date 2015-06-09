@@ -1,0 +1,12 @@
+<% provide(:title, 'All craps') %>
+<h1>All Craps</h1>
+
+<%= will_paginate %>
+
+<ul class="craps">
+  <% @craps.each do |crap| %>
+    <%= render crap %>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

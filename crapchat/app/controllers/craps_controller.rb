@@ -1,5 +1,5 @@
 class CrapsController < ApplicationController
-<<<<<<< HEAD
+
 	before_action :set_crap, only: [:show, :edit, :update, :destroy]
 	def create
 		@crap = Crap.new(crap_params)
@@ -22,7 +22,7 @@ class CrapsController < ApplicationController
 			format.html{redirect_to craps_url}
 		end	
 	end
-=======
+
     before_action :set_crap, only: [:show, :edit, :update, :destroy]
     def create
         @crap = Crap.new(crap_params)
@@ -38,7 +38,7 @@ class CrapsController < ApplicationController
     def edit
         
     end
->>>>>>> 21de2a6d275825218bba09fa065dafac5e621aca
+
 
     def destroy
         Crap.find(params[:id]).destroy
@@ -47,7 +47,6 @@ class CrapsController < ApplicationController
         end    
     end
 
-<<<<<<< HEAD
 	def show
 		@crap = Crap.find(params[:id])
 	end
@@ -55,11 +54,11 @@ class CrapsController < ApplicationController
 	def index
 		@craps = Crap.all
 	end
-=======
+
     def new
      @crap = Crap.new    
     end
->>>>>>> 21de2a6d275825218bba09fa065dafac5e621aca
+
 
     def show
         @crap = Crap.find(params[:id])

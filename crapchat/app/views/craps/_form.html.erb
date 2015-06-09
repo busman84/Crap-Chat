@@ -1,19 +1,24 @@
-<%= render 'shared/error_messages' %>
-     
-<%= f.label :first_name %>
-<%= f.text_field :first_name, class: 'form-control' %>
+<%= form_for(@crap) do |f| %>
+  <% if @crap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crap.errors.count, "error") %> prohibited this crap from being saved:</h2>
 
-<%= f.label :last_name %>
-<%= f.text_field :last_name, class: 'form-control' %>
+      <ul>
+      <% @crap.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= f.label :username %>
-<%= f.text_field :username, class: 'form-control' %>
+  <div class="field">
+    <%= f.label :post %><br>
+    <%= f.text_field :post %>
+  </div>
 
-<%= f.label :email %>
-<%= f.email_field :email, class: 'form-control' %>
+  <% request.session_options[:id] %>
 
-<%= f.label :password %>
-<%= f.password_field :password, class: 'form-control' %>
-
-<%= f.label :password_confirmation, "Confirmation" %>
-<%= f.password_field :password_confirmation, class: 'form-control' %>
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

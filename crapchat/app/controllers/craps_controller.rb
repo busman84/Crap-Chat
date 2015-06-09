@@ -5,7 +5,7 @@ class CrapsController < ApplicationController
 		@crap = Crap.new(crap_params)
 		respond_to do |format|
 			if @crap.save
-				format.html {redirect_to @crap, notice: "Solid Crap"}
+				format.html {redirect_to root_path, notice: "Solid Crap"}
 			else 
 				format.html {render :new}
 			end	

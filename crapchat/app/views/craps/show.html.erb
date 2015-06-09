@@ -1,13 +1,5 @@
+<%= notice %>
 
-<% provide(:title, @crap.first_name) %>
+<h1>Crap # <%= @crap.id %></h1>
 
-<div class="row">
- <aside class="col-md-4">
-   <section class="user_info">
-     <h1>
-    		Welcome
-         <%= @crap.first_name %>, <%= @crap.last_name %>
-     </h1>
-   </section>
- </aside>
-</div>
+<div><%= @crap.post %> </div>

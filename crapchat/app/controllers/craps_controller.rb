@@ -1,0 +1,2 @@
+class CrapsController < ApplicationController
+end

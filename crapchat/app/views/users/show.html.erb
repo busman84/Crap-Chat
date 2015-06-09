@@ -8,6 +8,14 @@
     		Welcome
          <%= @user.first_name %>, <%= @user.last_name %>
          
+         <%= notice %><br>
+
+			<% @craps.each do |crap| %>
+			<div class = "container craps">
+			<%= crap.post %>
+			</div>
+			<% end %>
+
      </h1>
    </section>
  </aside>

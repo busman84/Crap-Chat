@@ -16,32 +16,15 @@ class UsersController < ApplicationController
   
   end
 
-  # def create
-  #     @user = User.new(user_params)
-  #     respond_to do |format|
-  #     if @user.save
-  #       log_in @user
-  #       redirect_to @user
-  #     else
-  #         render 'new'
-  #     end
-  #   end
-  #   end
   def create
-    p params
-    @user = User.new(user_params)
-
-    respond_to do |format|
+      @user = User.new(user_params)
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        log_in @user
+        redirect_to @user
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+          render 'new'
       end
     end
-  end
-  
 
     def edit
       @user = User.find(params[:id])

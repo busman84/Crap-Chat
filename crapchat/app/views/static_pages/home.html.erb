@@ -1,2 +1,10 @@
 <h1>Crap Chat</h1>
 <p>Welcome to Crap Chat</p>
+
+<%= notice %><br>
+
+<% @craps.each do |crap| %>
+
+<%= crap.post %><br>
+
+<% end %>

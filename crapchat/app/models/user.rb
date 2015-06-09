@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :craps
   before_save { email.downcase! }
   before_save { username.downcase! }
   validates :first_name, :last_name, :username, presence: true, length: { maximum: 50 }

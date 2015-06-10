@@ -1,48 +1,33 @@
 class CrapsController < ApplicationController
-
-	before_action :set_crap, only: [:show, :edit, :update, :destroy]
-	def create
-		@crap = Crap.new(crap_params)
-		respond_to do |format|
-			if @crap.save
-				format.html {redirect_to root_path, notice: "Solid Crap"}
-			else 
-				format.html {render :new}
-			end	
-		end
-	end
-
-	def edit
-		
-	end
-
-	def destroy
-		Crap.find(params[:id]).destroy
-		respond_to do |format|
-			format.html{redirect_to craps_url}
-		end	
-	end
-
-	def show
-		@crap = Crap.find(params[:id])
-	end
-
-	def index
-		@craps = Crap.all
-	end
-
-    def new
-     @crap = Crap.new    
+    before_action :logged_in_user, only: [:create, :destroy]
+    before_action :correct_user,   only: :destroy
+	
+    def create
+    @crap = current_user.craps.build(crap_params)
+      if @crap.save
+        flash[:success] = "Solid Crap!"
+        redirect_to root_url
+      else
+        @feed_items = []
+        render 'static_pages/home'
+      end
     end
 
-    
-    private
-   def set_crap
-     @crap = Crap.find(params[:id])
-   end
+	def destroy
+    @crap.destroy
+    flash[:success] = "You just flushed your crap!"
+    redirect_to request.referrer || root_url
+  end
 
- # Never trust parameters from the scary internet, only allow the white list through.
-   def crap_params
-     params.require(:crap).permit(:id, :post)
-   end
+    
+   private
+
+    def crap_params
+      params.require(:crap).permit(:post, :picture)
+    end
+
+    def correct_user
+      @crap = current_user.craps.find_by(id: params[:id])
+      redirect_to root_url if @crap.nil?
+    end
 end

@@ -1,0 +1,12 @@
+<li id="crap-<%= crap.id %>">
+  <span class="user"><%= link_to crap.user.first_name, crap.user %></span>
+  <span class="content">
+  	<%= crap.post %>
+  	<%= image_tag crap.picture.url if crap.picture? %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(crap.created_at) %> ago.
+    <% if current_user?(crap.user) %>
+      <%= link_to "delete", crap, method: :delete,data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

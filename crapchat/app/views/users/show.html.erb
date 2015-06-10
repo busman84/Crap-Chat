@@ -1,22 +1,21 @@
-
 <% provide(:title, @user.first_name) %>
 
+
 <div class="row">
- <aside class="col-md-4">
-   <section class="user_info">
-     <h1>
-    		Welcome
-         <%= @user.first_name %>, <%= @user.last_name %>
-         
-         <%= notice %><br>
-
-			<% @craps.each do |crap| %>
-			<div class = "container craps">
-			<%= crap.post %>
-			</div>
-			<% end %>
-
-     </h1>
-   </section>
- </aside>
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @user.first_name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.craps.any? %>
+      <h3>Craps (<%= @user.craps.count %>)</h3>
+      <ol class="craps2">
+        <%= render @craps %>
+      </ol>
+      <%= will_paginate @craps %>
+    <% end %>
+  </div>
 </div>

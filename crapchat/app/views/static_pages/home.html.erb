@@ -1,3 +1,7 @@
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
@@ -21,42 +25,79 @@
   
 <% end %>
 
-<p><button onclick="geoFindMe()">Show my location</button></p>
+<p><button onclick="geoFindMe()">It's Potty Time!</button></p>
+
 <div id="out"></div>
+
+<div id="map-canvas"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdTonyv28KjxXAumHLQIdwJve05jhuWkE"></script>
 
 <script>
 
-	function geoFindMe() {
-		var output = document.getElementById("out");
-
-  		if (!navigator.geolocation){
-    		output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    		return;
-  		}
-
+function geoFindMe() {
+	var output = document.getElementById("out");
+	//If Geolocation is not supported return message ...
+		if (!navigator.geolocation){
+		output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+		return;
+		}
+		//Function that executed if position was found successfully
 	function success(position) {
     	var latitude  = position.coords.latitude;
     	var longitude = position.coords.longitude;
+    	//Send request to API for nearby locations
+    	$.ajax({
+    		url: "http://www.refugerestrooms.org/api/v1/restrooms/by_location.json",
+    		data: {
+    			lat: latitude,
+    			lng: longitude
+    		},
+    		dataType: "json",
+    		//Loop through data array and find lat/long for each object.
+    		success: function(data, status, xhr){
+    			for (var latitude in data) {
+    				var cordx = data[latitude];
+    				console.log(cordx.latitude);
+    			};
+    			for (var longitude in data) {
+    				var cordy = data[longitude];
+    				console.log(cordy.longitude)
+    			};
+    		},
+    		error: function(xhr, status, error){
+    			console.log(xhr, status, error);
+    		}
+    	});
 
-    	output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-
-    	var img = new Image();
-    	img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
-    	output.appendChild(img);
   	};
-
+  	////Function that executed if position was not found
 	function error() {
-    output.innerHTML = "Unable to retrieve your location";
+    	output.innerHTML = "Unable to retrieve your location";
   	};
 
 	output.innerHTML = "<p>Locating…</p>";
-
+	//Using html5 geo-locat to get current position
 	navigator.geolocation.getCurrentPosition(success, error);
 
+};
+
+function initialize() {
+	var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+	var mapOptions = {
+  		zoom: 4,
+  		center: myLatlng
 	}
+	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+	var marker = new google.maps.Marker({
+    	position: myLatlng,
+    	map: map,
+    	title: 'Hello World!'
+	});
+};
+
+google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
-
-<%= url = "http://www.refugerestrooms.org/api/v1/restroom/by_location.json?lat=" + latitude + "&" + "lng=" + longitude
-   response = HTTParty.get(url)%>

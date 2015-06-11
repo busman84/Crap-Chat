@@ -1,5 +1,5 @@
 <li id="crap-<%= crap.id %>">
-  <span class="user"><%= link_to crap.user.first_name, crap.user %></span>
+  <span class="user"><%= link_to crap.user.username, crap.user %></span>
   <span class="content">
   	<%= crap.post %>
   	<%= image_tag crap.picture.url if crap.picture? %></span>

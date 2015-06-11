@@ -30,7 +30,7 @@ The Crap Happy source repository is available via GitHub; look here for details:
 Requirements
 -------------------
 
-This is a list of required technologies to run Crap Chat. The following links are installation instructions for each:
+This is a list of required technologies to run Crap Happy. The following links are installation instructions for each:
  
  Ruby on Rails - http://guides.rubyonrails.org/getting_started.html
  

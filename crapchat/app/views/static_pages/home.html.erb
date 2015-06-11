@@ -36,7 +36,21 @@
 
 <!-- <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
  -->
+
 <script>
+
+function initialize() {
+
+	var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+	var mapOptions = {
+  		zoom: 4,
+  		center: myLatlng
+	}
+
+	map = new google.maps.Map(document.getElementById('map'), mapOptions);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
 
 function geoFindMe() {
 	var output = document.getElementById("out");
@@ -45,6 +59,7 @@ function geoFindMe() {
 		output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
 		return;
 		}
+		
 		//Function that executed if position was found successfully
 	function success(position) {
     	var latitude  = position.coords.latitude;
@@ -59,14 +74,16 @@ function geoFindMe() {
     		dataType: "json",
     		//Loop through data array and find lat/long for each object.
     		success: function(data, status, xhr){
-    			for (var latitude in data) {
-    				var cordx = data[latitude];
-    				console.log(cordx.latitude);
-    			};
-    			for (var longitude in data) {
-    				var cordy = data[longitude];
-    				console.log(cordy.longitude)
-    			};
+    			for (var i = 0; i < data.length; i++) {
+    				var location = data[i];
+    				var myLatlng = new google.maps.LatLng(location.latitude, location.longitude);
+    				var marker = new google.maps.Marker({
+    					position: myLatlng,
+    					map: map,
+    					title: 'Hello World!'
+					});
+    			}
+
     		},
     		error: function(xhr, status, error){
     			console.log(xhr, status, error);
@@ -84,55 +101,5 @@ function geoFindMe() {
 	navigator.geolocation.getCurrentPosition(success, error);
 
 };
-
-// handler = Gmaps.build('Google');
-// handler.buildMap(
-//   {
-//     provider: {
-//       disableDefaultUI: true
-//       // here you can pass other Google Maps API options here
-//     },
-//     internal: {
-//       id: 'map'
-//     }
-//   },
-//   function() {
-//     markers = handler.addMarkers([
-//       {
-//         "lat": 0,
-//         "lng": 0,
-//         "picture": {
-//           "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-//           "width":  36,
-//           "height": 36
-//         },
-//         "infowindow": "hello!"
-//       }
-//     ]);
-//     handler.bounds.extendWith(markers);
-//     handler.fitMapToBounds();
-//   }
-// );
-
-
-
-
-
-function initialize() {
-	var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
-	var mapOptions = {
-  		zoom: 4,
-  		center: myLatlng
-	}
-	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-	var marker = new google.maps.Marker({
-    	position: myLatlng,
-    	map: map,
-    	title: 'Hello World!'
-	});
-};
-
-google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>

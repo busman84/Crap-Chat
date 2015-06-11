@@ -4,8 +4,8 @@ gem 'mail_form'
 gem 'simple_form'
 
 #gems required for google maps using node.
-gem 'gmaps4rails'
-gem 'underscore-rails'
+# gem 'gmaps4rails'
+# gem 'underscore-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

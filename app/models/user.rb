@@ -1,7 +1,18 @@
 class User < ActiveRecord::Base
   has_many :craps, dependent: :destroy
+
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :active_relationships, foreign_key: "follower_id",
+                                   class_name:  "Relationship",
+                                   dependent:   :destroy
+  has_many :passive_relationships, foreign_key: "followed_id",
+                                   class_name:  "Relationship",
+                                   dependent:   :destroy                                   
+
   has_many :active_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
   has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
+
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -14,7 +25,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
- 
+
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -46,6 +57,22 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
+# Follows a user.
+  def follow!(other_user)
+    active_relationships.create!(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow!(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
+    # relationships.find_by_followed_id(other_user.id)
+  end
+
 # Activates an account.
   def activate
     update_attribute(:activated, true)
@@ -74,6 +101,16 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
+
+  # Returns a user's status feed.
+  # Returns a user's status feed.
+ # Returns a user's status feed.
+ def feed
+   following_ids = "SELECT followed_id FROM relationships
+                    WHERE  follower_id = :user_id"
+   Crap.where("user_id IN (#{following_ids})
+                    OR user_id = :user_id", user_id: id)
+ end
   def feed
     Crap.where("user_id IN (?) OR user_id = ?", following_ids, id)
   end

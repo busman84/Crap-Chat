@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users do
-    member do
+
+    member do 
+   
+
       get :following, :followers
     end
   end
@@ -26,5 +29,5 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :craps, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  
+
 end

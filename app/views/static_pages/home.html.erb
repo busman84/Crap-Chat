@@ -4,13 +4,17 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
       <section class="crap_form">
         <%= render 'shared/crap_form' %>
       </section>
-      <p><button onclick="geoFindMe()">Show me the closest crapper</button></p>
+      <p><button onclick="geoFindMe()">Show me the closest outhouse</button></p>
 <div id="out"></div>
     </aside>
     <div class="col-md-8">
@@ -21,9 +25,9 @@
 <% else %>
 <div class="row">
   <aside class="col-md-4">
-    <h1>Crap Chat</h1>
-    <p>Welcome to Crap Chat</p>
-    <p><button onclick="geoFindMe()">Show me the closest crapper</button></p>
+    <h1>The Outhouse</h1>
+    <p>Welcome to The Outhouse</p>
+    <p><button onclick="geoFindMe()">Show me the closest outhouse</button></p>
 <div id="out"></div>
   </aside>
   <div class="col-md-8">

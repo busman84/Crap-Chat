@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'create' => 'static_pages#create'
   get 'links' => 'static_pages#links'
   get 'help' => 'static_pages#help'
+  get 'crapper' => 'static_pages#find_your_crapper'
   get 'signup' => 'users#new'
   get "login" => 'sessions#new'
   post 'login' => 'sessions#create'

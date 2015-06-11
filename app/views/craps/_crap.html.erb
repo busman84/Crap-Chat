@@ -1,12 +1,21 @@
 <li id="crap-<%= crap.id %>">
-  <span class="user"><%= link_to crap.user.username, crap.user %></span>
-  <span class="content">
-  	<%= crap.post %>
-  	<%= image_tag crap.picture.url if crap.picture? %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(crap.created_at) %> ago.
-    <% if current_user?(crap.user) %>
-      <%= link_to "delete", crap, method: :delete,data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
+ <span class="user"><%= link_to crap.user.username, crap.user %></span>
+ <span class="content">
+     <div class = "row moveRight">
+   <%= crap.post %>
+   </div>
+   <div class = "row moveRight">
+     <%= image_tag crap.picture.url if crap.picture? %></span>
+ </div>
+ <% if current_user?(crap.user) %>
+ <span class="timestamp moveright2">
+   Posted <%= time_ago_in_words(crap.created_at) %> ago.
+     <%= link_to "delete", crap, method: :delete,data: { confirm: "You sure?" } %>
+   </span>
+     <%else%>
+     <span class="timestamp moveright4">
+     Posted <%= time_ago_in_words(crap.created_at) %> ago.
+   </span>
+   <% end %>
+ 
 </li>

@@ -10,7 +10,7 @@
   <% if current_user?(crap.user) %>
   <span class="timestamp moveright2">
     Posted <%= time_ago_in_words(crap.created_at) %> ago.
-      <%= link_to "delete", crap, method: :delete,data: { confirm: "You sure?" } %>
+      <%= link_to "Flush", crap, method: :delete,data: { confirm: "You sure?" } %>
     </span>
       <%else%>
       <span class="timestamp moveright4">

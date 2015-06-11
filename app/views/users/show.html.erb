@@ -8,17 +8,14 @@
         <%= @user.username %>
       </h1>
     </section>
-<<<<<<< HEAD
 <section class="stats">
       <%= render 'shared/stats' %>
     </section>
 
-=======
     <section class="stats">
       <%= render 'shared/stats' %>
       <%= render 'follow_form' if logged_in? %>
     </section>
->>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>

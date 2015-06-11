@@ -1,10 +1,10 @@
 <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
-<<<<<<< HEAD
+
             html: { method: :delete },
             remote: true) do |f| %>
  <%= f.submit "Unfollow", class: "btn" %>
-=======
+
              html: { method: :delete }) do |f| %>
   <%= f.submit "Their crap stinks", class: "btn follow_button" %>
->>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
+
 <% end %>

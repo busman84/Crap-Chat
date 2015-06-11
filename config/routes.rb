@@ -18,11 +18,10 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users do
-<<<<<<< HEAD
+
     member do 
-=======
-    member do
->>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
+   
+
       get :following, :followers
     end
   end
@@ -30,8 +29,5 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :craps, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-<<<<<<< HEAD
-=======
-  
->>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
+
 end

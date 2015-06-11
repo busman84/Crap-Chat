@@ -1,31 +1,29 @@
 <% provide(:title, @title) %>
 <div class="row">
-<<<<<<< HEAD
+
   <aside class="span4">
     <section>
   
       <h1><%= @user.first_name %></h1>
       <span><%= link_to "view my profile", @user %></span>
-=======
+
   <aside class="col-md-4">
     <section class="user_info">
       <h1><%= @user.first_name %></h1>
       <span><%= link_to "Check out my dumps", @user %></span>
->>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
+
       <span><b>Craps:</b> <%= @user.craps.count %></span>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
-<<<<<<< HEAD
       
     </section>
   </aside>
   <div class="span8">
-=======
+
     </section>
   </aside>
   <div class="col-md-8">
->>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">

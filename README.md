@@ -1,3 +1,5 @@
+<img src="http://justjessieblog.com/wp-content/uploads/2015/01/poop.png" align="right" width="200px" />
+
 # Crap Happy
 Crap Happy
 

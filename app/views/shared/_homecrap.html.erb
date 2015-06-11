@@ -1,0 +1,10 @@
+<% @craps.each do |crap| %>
+
+<ol class = "craps2">
+<li id="crap-<%= crap.id %>">
+  <span class="content">
+  	<%= crap.post %>
+  	<%= image_tag crap.picture.url if crap.picture? %></span>
+</li>
+</ol>
+<% end %>

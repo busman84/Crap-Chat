@@ -23,6 +23,10 @@ module Crapchat
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     # Include the authenticity token in remote forms.
+<<<<<<< HEAD
    config.action_view.embed_authenticity_token_in_remote_forms = true
+=======
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+>>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
   end
 end

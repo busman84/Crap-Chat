@@ -4,13 +4,21 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
+<<<<<<< HEAD
       <section>
         <%= render 'shared/stats' %>
       </section>
       
+=======
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+>>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
       <section class="crap_form">
         <%= render 'shared/crap_form' %>
       </section>
+      <p><button onclick="geoFindMe()">Show me the closest crapper</button></p>
+<div id="out"></div>
     </aside>
     <div class="col-md-8">
       <h3>Best Dumps</h3>
@@ -18,15 +26,22 @@
     </div>
   </div>
 <% else %>
+<div class="row">
+  <aside class="col-md-4">
+    <h1>Crap Chat</h1>
+    <p>Welcome to Crap Chat</p>
+    <p><button onclick="geoFindMe()">Show me the closest crapper</button></p>
+<div id="out"></div>
+  </aside>
+  <div class="col-md-8">
+      <h3>Best Dumps</h3>
+      <%= render 'shared/homecrap' %>
+  </div>
+</div>
 
-<h1>Crap Chat</h1>
-<p>Welcome to Crap Chat</p>
-
-  
 <% end %>
 
-<p><button onclick="geoFindMe()">Show my location</button></p>
-<div id="out"></div>
+
 
 <script>
 

@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
  <div><%= hidden_field_tag :followed_id, @user.id %></div>
  <%= f.submit "Follow", class: "btn btn-primary" %>
+=======
+<%= form_for(current_user.active_relationships.build) do |f| %>
+  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+  <%= f.submit "Watch them crap", class: "btn btn-primary follow_button" %>
+>>>>>>> 566092c7e3f4c5c7786e43ea01c7934333535730
 <% end %>

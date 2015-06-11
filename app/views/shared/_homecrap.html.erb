@@ -1,10 +1,18 @@
 <% @craps.each do |crap| %>
-
 <ol class = "craps2">
 <li id="crap-<%= crap.id %>">
-  <span class="content">
-  	<%= crap.post %>
-  	<%= image_tag crap.picture.url if crap.picture? %></span>
+<span class="user"><%= link_to crap.user.username, crap.user %></span>
+ <span class="content">
+     <div class = "row moveRight">
+         <%= crap.post %>
+     </div>
+    
+    <div class = "row moveRight">
+         <%= image_tag crap.picture.url if crap.picture? %></span>
+     </div>
 </li>
 </ol>
+<span class="timestamp moveright3">
+   Posted <%= time_ago_in_words(crap.created_at) %> ago.
+   </span>
 <% end %>

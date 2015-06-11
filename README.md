@@ -1,5 +1,6 @@
+<img src="http://vignette4.wikia.nocookie.net/theregularshow/images/6/6f/S6E13.058_Rigby_Leaves_the_Outhouse.png/revision/latest?cb=20150201041300" align="right" width="350px"  />
 # The Outhouse 
-<img src="http://vignette4.wikia.nocookie.net/theregularshow/images/6/6f/S6E13.058_Rigby_Leaves_the_Outhouse.png/revision/latest?cb=20150201041300" align="right" width="400px"  />
+
 
 What is The Outhouse?
 ------------------

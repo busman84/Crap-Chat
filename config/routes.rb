@@ -13,19 +13,19 @@ Rails.application.routes.draw do
   get 'create' => 'static_pages#create'
   get 'links' => 'static_pages#links'
   get 'help' => 'static_pages#help'
+  get 'crapper' => 'static_pages#find_your_crapper'
   get 'signup' => 'users#new'
   get "login" => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :craps, only: [:create, :destroy]
-  
-  #  do
-  #   member do
-  #     get :following, :followers
-  #   end
-  # end
+  resources :relationships, only: [:create, :destroy]
   
 end

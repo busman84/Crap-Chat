@@ -93,6 +93,32 @@ aside {
   margin-top: 15px;
 }
 
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+.users.follow {
+  padding: 0;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -142,7 +168,7 @@ input {
   background-color: #3B2314;
 }
 
-/* microposts */
+/* craps */
 
 .craps2 {
   list-style: none;
@@ -188,3 +214,36 @@ span.picture {
     border: 0;
   }
 }
+
+.follow_button {
+  margin-top: 2em;
+  width: 60%;
+}
+
+.moveRight{
+  position: relative;
+  left:6em;
+}
+
+.moveright2{
+  position: relative;
+  left:34.3em;
+}
+
+.moveright3{
+  position: relative;
+  left:42em;
+  color: #777777;
+}
+
+.moveright4{
+  position: relative;
+  left:36.8em;
+  color: #777777;
+}
+
+.moveDown{
+  position: relative;
+  top: 2em;
+}
+
